@@ -13,7 +13,7 @@
           class="group"
           :to="{ name: 'Home' }"
           :isActive="
-            preferredHomePage === 'Discussions' ? testRoute(/Discussions/g) : testRoute(/Spaces/g)
+            preferredHomePage === 'Discussions' ? testRoute(/^Discussions$|^DiscussionsTab$/) : testRoute(/Spaces/g)
           "
         >
           <template #prefix>
@@ -123,7 +123,7 @@
             <AppLink
               v-for="space in group.spaces"
               :key="space.name"
-              :to="{ name: 'Space', params: { spaceId: space.name } }"
+              :to="{ name: 'Space', params: { spaceId: space.name } }" :isActive="route.params.spaceId === space.name"
               class="flex h-7 items-center rounded px-2 text-ink-gray-7 transition"
               activeClass="bg-surface-selected shadow-sm"
               inactiveClass="hover:bg-surface-gray-2"
@@ -256,7 +256,7 @@ const navigation = computed(() => {
         name: 'DiscussionsTab',
         params: { feedType: 'recent' },
       },
-      isActive: testRoute(/Discussions/g),
+      isActive: testRoute(/^Discussions$|^DiscussionsTab$/),
       condition: () => preferredHomePage.value == 'Spaces',
     },
     {
@@ -282,7 +282,7 @@ const navigation = computed(() => {
       route: {
         name: 'MyTasks',
       },
-      isActive: testRoute(/MyTasks|Task/g),
+      isActive: testRoute(/^MyTasks$|^Task$/),
     },
     {
       name: 'Pages',
@@ -290,7 +290,7 @@ const navigation = computed(() => {
       route: {
         name: 'MyPages',
       },
-      isActive: testRoute(/MyPages|Page/g),
+      isActive: testRoute(/^MyPages$|^Page$/),
     },
     {
       name: 'People',

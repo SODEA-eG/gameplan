@@ -270,6 +270,7 @@
         :class="{ 'mx-auto w-full max-w-4xl px-5': !route.meta?.fullWidth }"
         :project="project"
         :team="team"
+        :key="route.path"
       />
     </router-view>
   </div>

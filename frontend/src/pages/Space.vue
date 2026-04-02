@@ -9,7 +9,7 @@
         <SpaceHeaderActionsTarget />
       </div>
     </PageHeader>
-    <component class="flex-1" v-if="space" :is="Component" :space="space" />
+    <component class="flex-1" v-if="space" :is="Component" :space="space" :key="route.path" />
     <div class="body-container pt-5" v-if="spaceList.isFinished && !space">
       <EmptyStateBox>
         <div class="text-ink-gray-6">Page not found</div>

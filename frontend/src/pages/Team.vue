@@ -68,7 +68,7 @@
         }
       "
     />
-    <router-view class="mx-auto max-w-4xl px-5" :team="team" />
+    <router-view class="mx-auto max-w-4xl px-5" :team="team" :key="$route.path" />
   </div>
 </template>
 <script>
