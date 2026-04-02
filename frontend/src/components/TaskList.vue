@@ -1,5 +1,5 @@
 <template>
-  <div class="@container" v-if="tasks.data?.length">
+  <div class="@container" v-if="tasks.data?.length > 0">
     <div v-for="group in groupedTasks" :key="group.title">
       <button
         class="group flex w-full items-baseline rounded-sm bg-surface-menu-bar px-2.5 py-2 text-base transition hover:bg-surface-gray-2"
@@ -112,7 +112,7 @@
       </div>
     </div>
   </div>
-  <EmptyStateBox v-else>
+  <EmptyStateBox v-else-if="tasks.data !== undefined || tasks.error">
     <template v-if="tasks.error">
       <ErrorMessage :message="tasks.error" />
     </template>
